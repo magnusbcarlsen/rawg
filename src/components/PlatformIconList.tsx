@@ -21,18 +21,18 @@ interface Props {
 }
 
 const PlatformIconsList = ({ platforms }: Props) => {
-  const iconMap: { [key: string]: IconType } = {
-    windows: FaWindows,
-    xbox: FaXbox,
-    playstation: FaPlaystation,
-    apple: FaApple,
-    linux: FaLinux,
-    android: FaAndroid,
-    steam: FaSteam,
-    iphone: MdPhoneIphone,
-    nintendo: SiNintendo,
-    web: BsGlobe,
-  };
+  // const iconMap: { [key: string]: IconType } = {
+  //   windows: FaWindows,
+  //   xbox: FaXbox,
+  //   playstation: FaPlaystation,
+  //   apple: FaApple,
+  //   linux: FaLinux,
+  //   android: FaAndroid,
+  //   steam: FaSteam,
+  //   iphone: MdPhoneIphone,
+  //   nintendo: SiNintendo,
+  //   web: BsGlobe,
+  // };
 
   const getIcon = (slug: string) => {
     switch (slug) {

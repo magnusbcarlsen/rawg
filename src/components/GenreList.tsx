@@ -4,7 +4,11 @@ import getCroppedImageUrl from "../services/image-url";
 
 
 const GenreList = () => {
-  const { data: genres, isLoading } = useGenres();
+  const { data: genres, error, isLoading } = useGenres();
+
+  if (error) return null; // make sure it doesnt crash if there is an error
+
+  if (isLoading) return <Spinner />
 
   return (
     <>
