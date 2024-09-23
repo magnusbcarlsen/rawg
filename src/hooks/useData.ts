@@ -7,25 +7,27 @@ interface Response<T> {
   results: T[];
 }
 
-const useData = <T>
-  (endpoint: string, 
-  requestConfig: AxiosRequestConfig, 
-  dependencies: any[]) => {
+const useData = <T>(
+  endpoint: string,
+  requestConfig?: AxiosRequestConfig,
+  dependencies?: any[]
+) => {
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    setIsLoading(true);
+  useEffect(
+    () => {
+      setIsLoading(true);
 
-    apiClient
-      .get<Response<T>>(endpoint, { ...requestConfig })
-      .then((response) => setData(response.data.results))
-      .catch((error) => setError(error.message))
-      .finally(() => setIsLoading(false));
-  }, 
-  dependencies ? [...dependencies] : []
-);
+      apiClient
+        .get<Response<T>>(endpoint, { ...requestConfig })
+        .then((response) => setData(response.data.results))
+        .catch((error) => setError(error.message))
+        .finally(() => setIsLoading(false));
+    },
+    dependencies ? [...dependencies] : []
+  );
 
   return { data, error, isLoading };
 };

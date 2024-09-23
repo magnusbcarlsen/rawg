@@ -1,6 +1,7 @@
 import { Heading, HStack, Image, List, ListItem, Spinner, Button } from "@chakra-ui/react";
 import useGenres, { Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
+import { useState } from "react";
 
 
 interface Props {
@@ -9,7 +10,10 @@ interface Props {
 }
 
 const GenreList = ({onSelectGenre, selectedGenre}: Props) => {
+  const [isExpanded, setIsExpanded] = useState(false);
   const { data: genres, error, isLoading } = useGenres();
+
+  const displayGenres = isExpanded ? genres : genres.slice(0, 5);
 
   if (error) return null; // make sure it doesnt crash if there is an error
 
@@ -19,7 +23,7 @@ const GenreList = ({onSelectGenre, selectedGenre}: Props) => {
     <>
       <Heading>Genres</Heading>
       <List>
-        {genres.map((genre) => (
+        {displayGenres.map((genre) => (
           <ListItem key={genre.id} paddingY="5px">
             <HStack>
               <Image
@@ -30,7 +34,6 @@ const GenreList = ({onSelectGenre, selectedGenre}: Props) => {
               />
               <Button 
                 colorScheme={selectedGenre?.id === genre.id ? "yellow" : "white"}
-
                 variant="link" 
                 fontSize="lg" 
                 onClick={()=>onSelectGenre(genre)} 
@@ -39,6 +42,9 @@ const GenreList = ({onSelectGenre, selectedGenre}: Props) => {
             </HStack>
           </ListItem>
         ))}
+        <Button onClick={()=> setIsExpanded(!isExpanded)}>
+          {isExpanded ? "Show less" : "Show more"}
+        </Button>
       </List>
     </>
   );
