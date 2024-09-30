@@ -18,7 +18,7 @@ export class Games {
   name!: string;
 
   @Column("varchar", { name: "background_image", nullable: true, length: 255 })
-  image_background!: string | null;
+  background_image!: string | null;
 
   @Column("int", { name: "metacritic", nullable: true })
   metacritic!: number | null;
