@@ -9,13 +9,15 @@ import { Platform } from "./hooks/useGames";
 import StoreList from "./components/StoreList";
 import { Store } from "./hooks/useStores";
 
-// export interface gameQuery {
-//   genre: Genre | null;
-//   platform: Platform | null;
-//   store: Store | null;
-// }
+export interface gameQuery {
+  genre: Genre | null;
+  platform: Platform | null;
+  store: Store | null;
+}
 
 function App() {
+  const [gameQuery, setGameQuery] = useState<gameQuery | null>(null); 
+
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
   const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
     null
