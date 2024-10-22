@@ -1,6 +1,6 @@
 import { Heading, HStack, Image, List, ListItem, Spinner, Button } from "@chakra-ui/react";
 import useStores, { Store } from "../hooks/useStores"; // Adjust the import according to your project structure
-import getCroppedImageUrl from "../services/image-url";
+// import getCroppedImageUrl from "../services/image-url";
 import { useState } from "react";
 
 interface Props {

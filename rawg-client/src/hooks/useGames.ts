@@ -13,6 +13,7 @@ export interface Game {
   image_background: string;
   parent_platforms: { platform: Platform }[];
   metacritic: number;
+  selectedStore: Store | null;
 }
 
 const useGames = (
@@ -24,6 +25,7 @@ selectedGenre: Genre | null, selectedPlatform: Platform | null, selectedStore: S
       params: {
         genres: selectedGenre?.id,
         parent_platforms: selectedPlatform?.id,
+        stores: selectedStore?.id,
       },
     },
     [selectedGenre?.id, selectedPlatform?.id]
